@@ -3,24 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meme Coin League</title>
+  <title>Home - Meme Coin League</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <!-- Private Access Script -->
-  <!-- <script>
-  const password = "ptutt"; // Sostituisci con password reale
-  const access = prompt("Accesso privato: inserisci la password");
-  if(access !== password) {
-    document.documentElement.innerHTML = "<h2 style=\"color:red; text-align:center; margin-top: 20%;\">Accesso non autorizzato</h2>";
-    document.body.style.backgroundColor = "#000";
-    document.body.style.margin = "0";
-    document.body.style.height = "100vh";
-    throw new Error("Accesso negato");
-  }
-</script>
-  --!>
+  <script>
+    const password = "your_secret_password";
+    const access = prompt("Private Access: Enter password");
+    if (access !== password) {
+      document.documentElement.innerHTML = "<h2 style='color:red; text-align:center; margin-top:20%;'>Unauthorized Access</h2>";
+      document.body.style.backgroundColor = "#000";
+      throw new Error("Access Denied");
+    }
+  </script>
 
   <!-- Header -->
   <header class="header">
@@ -30,7 +27,8 @@
         <h1>Meme Coin League</h1>
       </div>
       <nav class="nav">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="tournament.html">Tournament</a>
         <a href="tokenomics.html">Tokenomics</a>
         <a href="whitepaper.html">Whitepaper</a>
         <a href="support.html">Support</a>
@@ -40,12 +38,12 @@
     </div>
   </header>
 
-  <!-- Hero Section with Countdown -->
+  <!-- Hero Section -->
   <section class="hero">
-  <div class="container" id="countdown-container">
-    <!-- Qui il JS inserirà countdown o pulsante -->
-  </div>
-</section>
+    <div class="container" id="countdown-container">
+      <!-- JS will insert countdown or Vote now button -->
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
