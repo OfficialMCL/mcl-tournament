@@ -9,11 +9,15 @@
 </head>
 <body>
     <script>
-const password = "ptutt"; // scegli una password sicura
-const inp = prompt("Accesso privato: inserisci la password");
-if(inp !== password) {
-    document.body.innerHTML = "<h2>Accesso non autorizzato</h2>";
-}
+  const password = "ptutt"; // Sostituisci con password reale
+  const access = prompt("Accesso privato: inserisci la password");
+  if(access !== password) {
+    document.documentElement.innerHTML = "<h2 style=\"color:red; text-align:center; margin-top: 20%;\">Accesso non autorizzato</h2>";
+    document.body.style.backgroundColor = "#000";
+    document.body.style.margin = "0";
+    document.body.style.height = "100vh";
+    throw new Error("Accesso negato");
+  }
 </script>
     <!-- Header -->
     <header class="header">
