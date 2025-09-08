@@ -1,19 +1,20 @@
-// Updated Countdown Script with Days for Meme Coin League Homepage
-// Sets countdown to next Thursday 00:00 UTC+2
+// Updated Countdown Script: ends next Thursday 00:00 local time (UTC+2 for CEST)
 document.addEventListener('DOMContentLoaded', () => {
     const countdownElem = document.getElementById('countdown');
 
     function updateCountdown() {
         const now = new Date();
-        // Compute next Thursday at 00:00 UTC+2
-        const target = new Date(now);
-        const day = now.getUTCDay(); // Sunday = 0
-        const diffDays = (4 - day + 7) % 7;
-        target.setUTCDate(now.getUTCDate() + diffDays);
-        // Set to Thursday 00:00 UTC+2, which is Wednesday 22:00 UTC
-        target.setUTCHours(22, 0, 0, 0);
+        // Calculate next Thursday local at 00:00
+        const todaysDay = now.getDay(); // Sunday=0, Monday=1,...
+        const daysUntilThursday = (4 - todaysDay + 7) % 7;
+        let target = new Date(now);
+        target.setDate(now.getDate() + daysUntilThursday);
+        target.setHours(0, 0, 0, 0); // Next Thursday 00:00 local time
+        // If that time has already passed today, go to next week's Thursday
         if (target <= now) {
-            target.setUTCDate(target.getUTCDate() + 7);
+            target = new Date(now);
+            target.setDate(now.getDate() + daysUntilThursday + 7);
+            target.setHours(0, 0, 0, 0);
         }
 
         const diff = target - now;
