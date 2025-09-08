@@ -762,11 +762,11 @@ body {
 
 /* Header */
 .header {
-  background: rgba(var(--color-slate-500-rgb), 0.85);
-  position: sticky;
-  top: 0;
+  background: rgba(44,44,46,0.85);
+  /* position: sticky; */
+  /* top: 0; */
   z-index: 1000;
-  padding: var(--space-16) 0;
+  padding: 1rem 0;
 }
 
 .header .logo-img {
