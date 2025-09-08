@@ -1,46 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('countdown-container');
+  const container = document.getElementById('countdown-container');
 
-    function updateDisplay() {
-        const now = new Date();
+  function updateDisplay() {
+    const now = new Date();
 
-        const day = now.getUTCDay(); // domenica=0, mercoledì=3
-        const hour = now.getUTCHours();
+    // Calcola data target mercoledì 22:00 UTC (giovedì 00:00 CEST)
+    const day = now.getUTCDay(); // 0=Sun, 3=Wed
+    let daysToWed = (3 - day + 7) % 7;
+    let wed22 = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysToWed, 22));
+    if (now >= wed22) wed22 = new Date(wed22.getTime() + 7*24*60*60*1000);
 
-        // Calcolo orari chiave in UTC
-        // Domenica 22:00 UTC (inizio countdown)
-        let daysUntilSunday22 = (0 - day + 7) % 7;
-        let sunday22 = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilSunday22, 22, 0, 0));
+    // Calcola data target domenica 22:00 UTC (inizio countdown)
+    let daysToSun = (0 - day + 7) % 7;
+    let sun22 = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysToSun, 22));
+    if (now >= sun22 || sun22 > wed22) sun22 = new Date(sun22.getTime() - 7*24*60*60*1000);
 
-        // Mercoledì 22:00 UTC (fine countdown)
-        let daysUntilWed22 = (3 - day + 7) % 7;
-        let wed22 = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilWed22, 22, 0, 0));
+    // Se siamo fra domenica22 e mercoledì22, mostra il countdown
+    if (now >= sun22 && now < wed22) {
+      const diff = wed22 - now;
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
 
-        // Se la data di riferimento è passata, sposta alla prossima settimana
-        if (now >= wed22) wed22 = new Date(wed22.getTime() + 7 * 24 * 60 * 60 * 1000);
-        if (now >= sunday22) sunday22 = new Date(sunday22.getTime() + 7 * 24 * 60 * 60 * 1000);
-
-        if (now >= sunday22 && now < wed22) {
-            // Da domenica 22 a mercoledì 22 mostra il countdown
-            const diff = wed22 - now;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            container.innerHTML = `
-                <div id="countdown" class="countdown">${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s</div>
-                <p class="announcement">Get ready! The tournament is about to begin.</p>
-            `;
-        } else {
-            // Da mercoledì 22 a domenica 22 mostra il pulsante Vote now
-            container.innerHTML = `
-                <a href="tournament.html" class="vote-btn">Vote now</a>
-            `;
-        }
+      container.innerHTML = `
+        <h2>Next Tournament Round Starts In:</h2>
+        <div id="countdown" class="countdown">
+          ${days}d ${hours.toString().padStart(2,'0')}h 
+          ${minutes.toString().padStart(2,'0')}m 
+          ${seconds.toString().padStart(2,'0')}s
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <a href="tournament.html" class="vote-btn">Vote now</a>
+      `;
     }
+  }
 
-    updateDisplay();
-    setInterval(updateDisplay, 1000);
+  updateDisplay();
+  setInterval(updateDisplay, 1000);
 });
