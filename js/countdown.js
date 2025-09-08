@@ -1,20 +1,17 @@
-// Updated Countdown Script: ends next Thursday 00:00 local time (UTC+2 for CEST)
 document.addEventListener('DOMContentLoaded', () => {
     const countdownElem = document.getElementById('countdown');
 
     function updateCountdown() {
         const now = new Date();
-        // Calculate next Thursday local at 00:00
-        const todaysDay = now.getDay(); // Sunday=0, Monday=1,...
-        const daysUntilThursday = (4 - todaysDay + 7) % 7;
-        let target = new Date(now);
-        target.setDate(now.getDate() + daysUntilThursday);
-        target.setHours(0, 0, 0, 0); // Next Thursday 00:00 local time
-        // If that time has already passed today, go to next week's Thursday
+
+        // Calcola il prossimo giovedì alle 22:00 UTC (equivale a giovedì 00:00 CEST)
+        const day = now.getUTCDay(); // 0=Sunday, 4=Thursday
+        let daysUntilThursday = (4 - day + 7) % 7;
+        let target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilThursday, 22, 0, 0));
+
         if (target <= now) {
-            target = new Date(now);
-            target.setDate(now.getDate() + daysUntilThursday + 7);
-            target.setHours(0, 0, 0, 0);
+            // Se il tempo è già passato, prendi la prossima settimana
+            target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilThursday + 7, 22, 0, 0));
         }
 
         const diff = target - now;
