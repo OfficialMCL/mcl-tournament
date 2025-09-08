@@ -39,9 +39,10 @@
     }
     .swiper {
       width: 100%;
-      height: 500px;
+      height: 600px;
       border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .swiper-slide {
       text-align: center;
@@ -50,15 +51,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
     .swiper-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* Changed from cover to contain */
+      max-width: 100%;
+      max-height: 100%;
     }
     .swiper-button-next,
     .swiper-button-prev {
       color: var(--primary);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+    }
+    .swiper-pagination-bullet {
+      background: rgba(255, 255, 255, 0.5);
     }
     .swiper-pagination-bullet-active {
       background: var(--primary);
@@ -80,6 +91,16 @@
     }
     .download-link:hover {
       transform: translateY(-2px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .swiper {
+        height: 400px;
+      }
+      .carousel-container h3 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -112,7 +133,7 @@
       
       <!-- Download Link -->
       <div class="download-section">
-        <a href="assets/MCL-Whitepaper-v1-Updated.pdf" target="_blank" class="download-link">
+        <a href="assets/MCLWhitepaper.pdf" target="_blank" class="download-link">
           <i class="fas fa-download"></i> Download Full Whitepaper (PDF)
         </a>
       </div>
@@ -141,7 +162,7 @@
 
       <!-- Embedded PDF Viewer -->
       <iframe
-        src="assets/MCL-Whitepaper-v1-Updated.pdf"
+        src="assets/MCLWhitepaper.pdf"
         class="pdf-viewer"
         title="MCL Whitepaper PDF"
       ></iframe>
