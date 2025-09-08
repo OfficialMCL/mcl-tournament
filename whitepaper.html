@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whitepaper - Meme Coin League</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitepaper – Meme Coin League</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <!-- Add a carousel library (e.g., Swiper) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+  <style>
+    /* Embedded PDF container */
+    .pdf-viewer {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      margin-bottom: 2rem;
+    }
+    /* Carousel container styling */
+    .carousel-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 1rem;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="container">
       <div class="logo">
-        <img src="assets/mcl-logo.png" alt="MCL Logo" class="logo-img">
+        <img src="assets/mcl-logo.png" alt="MCL Logo" class="logo-img" />
         <h1>Meme Coin League</h1>
       </div>
       <nav class="nav">
@@ -22,24 +58,48 @@
         <a href="whitepaper.html" class="active">Whitepaper</a>
         <a href="support.html">Support</a>
         <a href="about.html">About Us</a>
-        <button id="connect-wallet" class="wallet-btn"><i class="fas fa-wallet"></i> Connect Wallet</button>
+        <button id="connect-wallet" class="wallet-btn">
+          <i class="fas fa-wallet"></i> Connect Wallet
+        </button>
       </nav>
     </div>
   </header>
 
-  <!-- Whitepaper Content -->
+  <!-- Whitepaper Section -->
   <section class="content-section">
     <div class="container">
       <h2>Whitepaper</h2>
-      <p>
-        Our whitepaper provides an in-depth overview of the Meme Coin League
-        architecture, consensus mechanism, tokenomics, and governance.
-      </p>
-      <p>
-        <a href="assets/mcl-whitepaper.pdf" target="_blank" class="download-link">
-          <i class="fas fa-download"></i> Download Whitepaper (PDF)
-        </a>
-      </p>
+      
+      <!-- Embedded PDF Viewer -->
+      <iframe
+        src="assets/MCL-Whitepaper-v1-Updated.pdf"
+        class="pdf-viewer"
+        title="MCL Whitepaper PDF"
+      ></iframe>
+
+      <!-- Image Carousel Placeholder -->
+      <div class="carousel-container">
+        <h3>Whitepaper Highlights</h3>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- Example slides: replace src with your images -->
+            <div class="swiper-slide">
+              <img src="assets/slide1.png" alt="Slide 1: Tournament Structure" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/slide2.png" alt="Slide 2: Tokenomics" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/slide3.png" alt="Slide 3: Voting Mechanics" />
+            </div>
+            <!-- Add more slides as needed -->
+          </div>
+          <!-- Carousel navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -50,6 +110,21 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
   <script src="js/wallet.js"></script>
 </body>
 </html>
