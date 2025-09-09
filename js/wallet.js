@@ -1,21 +1,14 @@
-
-const connectButton = document.getElementById('connectButton');
-
-connectButton.addEventListener('click', async () => {
+document.getElementById('connectButton').addEventListener('click', async () => {
   if (window.solana && window.solana.isPhantom) {
     try {
-      const response = await window.solana.connect();
-      console.log('Connected:', response.publicKey.toString());
-      alert('Wallet connected: ' + response.publicKey.toString());
+      // Richiesta di connessione al wallet Phantom
+      const resp = await window.solana.connect();
+      console.log('Connected with public key:', resp.publicKey.toString());
+      // Puoi usare resp.publicKey per aggiornare l'interfaccia o inviarla al server
     } catch (err) {
-      if (err.code === 4001) {
-        alert('Connection request rejected by user.');
-      } else {
-        console.error(err);
-        alert('Error connecting to wallet.');
-      }
+      console.error('User rejected the connection or error:', err);
     }
   } else {
-    alert('Phantom Wallet not found. Please install the extension and try again.');
+    alert('Phantom wallet non rilevato. Per favore installalo da https://phantom.app/');
   }
 });
