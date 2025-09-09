@@ -1026,6 +1026,14 @@ body {
   display: block;
 }
 
+.carousel-container h3 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 3rem;  /* spazio verticale maggiore sotto il titolo */
+  margin-top: 2rem;     /* opzionale: spazio sopra il titolo */
+}
 
 
 #connectWalletBtn {
