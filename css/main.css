@@ -938,7 +938,7 @@ select.form-control {
   --color-gray-300-rgb: 167, 169, 169;
   --color-gray-200-rgb: 245, 245, 245;
 
-  /* Colorful background palette - Dark Mode */
+  /* Background color tokens (Dark Mode) */
   --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
   --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
   --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
@@ -1083,19 +1083,38 @@ a:hover {
   width: 90%;
   max-width: var(--container-xl);
   margin: 0 auto;
-  background: transparent;
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
 }
 
-@media (min-width: 640px) { .container { max-width: var(--container-sm); } }
-@media (min-width: 768px) { .container { max-width: var(--container-md); } }
-@media (min-width: 1024px) { .container { max-width: var(--container-lg); } }
-@media (min-width: 1280px) { .container { max-width: var(--container-xl); } }
+@media (min-width: 640px) { 
+  .container { 
+    max-width: var(--container-sm); 
+  } 
+}
+@media (min-width: 768px) { 
+  .container { 
+    max-width: var(--container-md); 
+  } 
+}
+@media (min-width: 1024px) { 
+  .container { 
+    max-width: var(--container-lg); 
+  } 
+}
+@media (min-width: 1280px) { 
+  .container { 
+    max-width: var(--container-xl); 
+  } 
+}
 
 /* Header */
 .header {
-  background: rgba(var(--color-brown-600-rgb), 0.85);
+  background: rgba(var(--color-surface), 0.85);
+  backdrop-filter: blur(8px);
   z-index: 1000;
-  padding: 1rem 0;
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header .logo {
@@ -1127,6 +1146,7 @@ a:hover {
   position: relative;
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-semibold);
+  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .nav a::after {
@@ -1143,6 +1163,10 @@ a:hover {
 .nav a:hover::after,
 .nav a.active::after {
   width: 100%;
+}
+
+.nav a:hover {
+  color: var(--color-primary);
 }
 
 .wallet-btn {
@@ -1195,19 +1219,19 @@ a:hover {
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-16);
-  color: var(--color-text);
+  color: var(--color-cream-50);
 }
 
 .hero p {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-32);
-  color: var(--color-text);
+  color: var(--color-cream-50);
 }
 
 /* Countdown */
 .countdown {
   display: inline-block;
-  background: var(--color-secondary);
+  background: rgba(var(--color-brown-600-rgb), 0.15);
   padding: var(--space-16) var(--space-32);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
@@ -1246,7 +1270,10 @@ a:hover {
 .carousel-container {
   max-width: 900px;
   margin: 0 auto 3rem auto;
-  background: transparent;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  padding: var(--space-24);
 }
 
 .carousel-container h3 {
@@ -1256,7 +1283,6 @@ a:hover {
   color: var(--color-primary);
   margin-top: 2rem;
   margin-bottom: 3rem;
-  background: transparent;
   padding: 0;
 }
 
@@ -1265,20 +1291,63 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-.carousel-btn {
-  background: var(--color-primary);
-  color: var(--color-btn-primary-text);
-  border: none;
-  padding: var(--space-8) var(--space-16);
-  margin: 0 var(--space-8);
-  border-radius: var(--radius-sm);
+/* Circular Play/Pause Button */
+.play-pause-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-weight: var(--font-weight-bold);
-  transition: background-color var(--duration-fast) var(--ease-standard);
+  transition: all var(--duration-normal) var(--ease-standard);
+  box-shadow: var(--shadow-md);
+  margin: 0 auto;
+  position: relative;
 }
 
-.carousel-btn:hover {
-  background: var(--color-primary-hover);
+.play-pause-btn:hover {
+  background: var(--color-secondary);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.play-pause-btn:active {
+  transform: scale(0.95);
+}
+
+.play-pause-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Pause icon (two vertical bars) */
+.pause-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.pause-icon::before,
+.pause-icon::after {
+  content: '';
+  width: 4px;
+  height: 18px;
+  background: var(--color-text);
+  border-radius: 1px;
+}
+
+/* Play icon (triangle pointing right) */
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 12px solid var(--color-text);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 3px; /* Slight offset to center visually */
 }
 
 .swiper {
@@ -1295,11 +1364,10 @@ a:hover {
 .swiper-wrapper {
   padding: 0;
   margin: 0;
-  background: transparent;
 }
 
 .swiper-slide {
-  background-color: transparent;
+  background-color: var(--color-surface);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1309,16 +1377,22 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background-color: transparent;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--color-primary);
-  background: rgba(var(--color-surface), 0.8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: var(--color-secondary);
 }
 
 .swiper-pagination-bullet {
@@ -1334,7 +1408,7 @@ a:hover {
   width: 100%;
   height: 95vh;
   margin-top: 3rem;
-  border: none;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   box-shadow: var(--shadow-lg);
   display: block;
@@ -1355,10 +1429,17 @@ a:hover {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
   transition: transform var(--duration-fast) var(--ease-standard);
+  box-shadow: var(--shadow-md);
 }
 
 .download-btn:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.download-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 /* Connect wallet button */
@@ -1369,23 +1450,24 @@ a:hover {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-standard);
-  box-shadow: var(--shadow-sm);
+  transition: background-color var(--duration-normal) var(--ease-standard), 
+              box-shadow var(--duration-normal) var(--ease-standard);
+  box-shadow: var(--shadow-md);
 }
 
 #connectButton:hover {
   background-color: var(--color-primary-hover);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 #connectButton:active {
   background-color: var(--color-primary-active);
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-sm);
 }
 
-#connectButton:focus {
+#connectButton:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
 }
@@ -1393,7 +1475,6 @@ a:hover {
 /* Sections spacing */
 .content-section {
   padding: var(--space-32) 0;
-  background: transparent;
 }
 
 /* Footer */
@@ -1440,6 +1521,13 @@ a:hover {
   }
   .container {
     width: 95%;
+  }
+  .play-pause-btn {
+    width: 50px;
+    height: 50px;
+  }
+  .carousel-container {
+    padding: var(--space-16);
   }
 }
 
@@ -1490,13 +1578,17 @@ a:hover {
   .swiper {
     height: 300px;
   }
-  .carousel-btn {
-    padding: var(--space-6) var(--space-12);
-    margin: 0 var(--space-4);
-    font-size: var(--font-size-sm);
+  .play-pause-btn {
+    width: 45px;
+    height: 45px;
   }
-  .download-btn {
-    padding: var(--space-10) var(--space-24);
-    font-size: var(--font-size-base);
+  .carousel-container {
+    padding: var(--space-12);
+    margin: 0 auto var(--space-20) auto;
+  }
+  .carousel-container h3 {
+    font-size: var(--font-size-lg);
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-16);
   }
 }
