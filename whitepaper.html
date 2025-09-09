@@ -5,140 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whitepaper – Meme Coin League</title>
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet"
-        href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <style>
-    .pdf-viewer {
-      width: 100%;
-      height: 70vh;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 600px) {
-    .pdf-viewer {
-      display: none !important;
-    }
-    .download-section {
-      margin-top: 2rem;
-    }
-  }
-    .download-section {
-      text-align: center;
-      margin: 1rem 0 3rem;
-    }
-    .download-btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      color: #fff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      transition: transform 0.2s ease;
-    }
-    .download-btn:hover {
-      transform: translateY(-2px);
-    }
-    .carousel-container {
-      max-width: 900px;
-      margin: 0 auto 3rem;
-      
-    }
-    .swiper {
-      width: 100%;
-      height: 500px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-    }
-    .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: var(--primary);
-      background: rgba(255,255,255,0.8);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-    }
-    .swiper-pagination-bullet {
-      background: rgba(255,255,255,0.5);
-    }
-    .swiper-pagination-bullet-active {
-      background: var(--primary);
-    }
-    @media (max-width: 768px) {
-      .swiper { height: 300px; }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="logo">
-        <img src="assets/mcl-logo.png" alt="MCL Logo" class="logo-img" />
-        <h1>Meme Coin League</h1>
-      </div>
       <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="tournament.html">Tournament</a>
-        <a href="tokenomics.html">Tokenomics</a>
-        <a href="whitepaper.html" class="active">Whitepaper</a>
-        <a href="support.html">Support</a>
-        <a href="about.html">About Us</a>
-        <button id="connect-wallet" class="wallet-btn">
-          <i class="fas fa-wallet"></i> Connect Wallet
-        </button>
+        <div class="logo">
+          <img src="assets/mcl-logo.png" alt="MCL Logo" class="logo-img" />
+          <h1>Meme Coin League</h1>
+        </div>
+        <div style="display: flex; align-items: center; gap: 2rem;">
+          <a href="index.html">Home</a>
+          <a href="tournament.html">Tournament</a>
+          <a href="tokenomics.html">Tokenomics</a>
+          <a href="whitepaper.html" class="active">Whitepaper</a>
+          <a href="support.html">Support</a>
+          <a href="about.html">About Us</a>
+          <button id="connect-wallet" class="wallet-btn">
+            <i class="fas fa-wallet"></i> Connect Wallet
+          </button>
+        </div>
       </nav>
     </div>
   </header>
 
+  <!-- Whitepaper Section -->
   <section class="content-section">
     <div class="container">
+      <h2>Whitepaper</h2>
 
-      <!-- Carousel -->
+      <!-- Image Carousel -->
       <div class="carousel-container">
-  <h3>Whitepaper Highlights</h3>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="assets/slide1.png" alt="What is Meme Coin League?" />
-      </div>
-      <div class="swiper-slide">
-        <img src="assets/slide2.png" alt="MCL Staking & Voting" />
-      </div>
-      <div class="swiper-slide">
-        <img src="assets/slide3.png" alt="MCL Tokenomics & Benefits" />
-      </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-  </div>
-</div>
-    </div>
+        <h3>Whitepaper Highlights</h3>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+          <button id="pauseBtn" class="carousel-btn">Pause</button>
+          <button id="playBtn" class="carousel-btn" style="display:none;">Play</button>
+        </div>
 
-    <div class="carousel-controls" style="text-align:center; margin-bottom: 1rem;">
-  <button id="pauseBtn" class="carousel-btn">Pause</button>
-  <button id="playBtn" class="carousel-btn" style="display:none;">Play</button>
-</div>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="assets/slide1.png" alt="Tournament Bracket with Meme Coins" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/slide2.png" alt="MCL Token Staking Interface" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/slide3.png" alt="MCL Tokenomics & Benefits" />
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
 
-    <!-- Embedded PDF -->
+      <!-- Embedded PDF -->
       <iframe
         src="assets/MCLWhitepaper.pdf"
         class="pdf-viewer"
@@ -151,28 +78,19 @@
           <i class="fas fa-download"></i> Download Whitepaper (PDF)
         </a>
       </div>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Meme Coin League. All rights reserved.</p>
     </div>
   </footer>
 
-   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="js/wallet.js"></script>
-  <script>
-    new Swiper('.swiper', {
-      loop: true,
-      autoplay: { delay: 7000, disableOnInteraction: false },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      pagination: { el: '.swiper-pagination', clickable: true },
-    });
-  </script>
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/carousel.js"></script>
-</body>
-</html>
-
+  <script src="js/wallet.js"></script>
 </body>
 </html>
