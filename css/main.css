@@ -311,6 +311,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: #121212;
 }
 
 *,
@@ -1033,6 +1034,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   color: var(--primary);
+  background: transparent !important;
   margin-bottom: 3rem;  /* spazio verticale maggiore sotto il titolo */
   margin-top: 2rem;     /* opzionale: spazio sopra il titolo */
 }
