@@ -15,20 +15,22 @@ const swiper = new Swiper('.swiper', {
   },
 });
 
-// Pause / Play controls
-const pauseBtn = document.getElementById('pauseBtn');
-const playBtn = document.getElementById('playBtn');
+// Circular Play/Pause button control
+const playPauseBtn = document.getElementById('playPauseBtn');
+let isPlaying = true; // Carousel starts playing by default
 
-if (pauseBtn && playBtn) {
-  pauseBtn.addEventListener('click', () => {
-    swiper.autoplay.stop();
-    pauseBtn.style.display = 'none';
-    playBtn.style.display = 'inline-block';
-  });
-
-  playBtn.addEventListener('click', () => {
-    swiper.autoplay.start();
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'inline-block';
+if (playPauseBtn) {
+  playPauseBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      // Switch to paused state
+      swiper.autoplay.stop();
+      playPauseBtn.innerHTML = '<div class="play-icon"></div>';
+      isPlaying = false;
+    } else {
+      // Switch to playing state
+      swiper.autoplay.start();
+      playPauseBtn.innerHTML = '<div class="pause-icon"></div>';
+      isPlaying = true;
+    }
   });
 }
