@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Connect Solana Wallet</title>
-</head>
-<body>
-  <button id="connectWalletBtn">Connect Solana Wallet</button>
 
-  <script>
-    const connectButton = document.getElementById('connectWalletBtn');
+const connectButton = document.getElementById('connectButton');
 
-    connectButton.addEventListener('click', async () => {
-      if (window.solana && window.solana.isPhantom) {
-        try {
-          // Request connection
-          const response = await window.solana.connect();
-          alert('Connected with public key: ' + response.publicKey.toString());
-        } catch (err) {
-          if (err.code === 4001) {
-            alert('Connection request rejected by user.');
-          } else {
-            alert('Error connecting to wallet.');
-          }
-        }
+connectButton.addEventListener('click', async () => {
+  if (window.solana && window.solana.isPhantom) {
+    try {
+      const response = await window.solana.connect();
+      console.log('Connected:', response.publicKey.toString());
+      alert('Wallet connected: ' + response.publicKey.toString());
+    } catch (err) {
+      if (err.code === 4001) {
+        alert('Connection request rejected by user.');
       } else {
-        alert('Phantom Wallet not found. Please install it.');
+        console.error(err);
+        alert('Error connecting to wallet.');
       }
-    });
-  </script>
-</body>
-</html>
+    }
+  } else {
+    alert('Phantom Wallet not found. Please install the extension and try again.');
+  }
+});
