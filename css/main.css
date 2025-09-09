@@ -919,6 +919,7 @@ select.form-control {
     --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
     --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
     --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
@@ -938,7 +939,7 @@ select.form-control {
   --color-gray-300-rgb: 167, 169, 169;
   --color-gray-200-rgb: 245, 245, 245;
 
-  /* Background color tokens (Dark Mode) */
+  /* Colorful background palette - Dark Mode */
   --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
   --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
   --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
@@ -1024,11 +1025,11 @@ html {
   font-family: var(--font-family-base);
   line-height: var(--line-height-normal);
   color: var(--color-text);
-  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: var(--color-background);
   height: 100%;
 }
 
@@ -1083,38 +1084,33 @@ a:hover {
   width: 90%;
   max-width: var(--container-xl);
   margin: 0 auto;
-  padding-left: var(--space-16);
-  padding-right: var(--space-16);
+  background: transparent;
 }
 
-@media (min-width: 640px) { 
-  .container { 
-    max-width: var(--container-sm); 
-  } 
-}
-@media (min-width: 768px) { 
-  .container { 
-    max-width: var(--container-md); 
-  } 
-}
-@media (min-width: 1024px) { 
-  .container { 
-    max-width: var(--container-lg); 
-  } 
-}
-@media (min-width: 1280px) { 
-  .container { 
-    max-width: var(--container-xl); 
-  } 
-}
+@media (min-width: 640px) { .container { max-width: var(--container-sm); } }
+@media (min-width: 768px) { .container { max-width: var(--container-md); } }
+@media (min-width: 1024px) { .container { max-width: var(--container-lg); } }
+@media (min-width: 1280px) { .container { max-width: var(--container-xl); } }
 
 /* Header */
 .header {
-  background: rgba(var(--color-surface), 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(var(--color-brown-600-rgb), 0.85);
   z-index: 1000;
-  padding: var(--space-16) 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: rgba(var(--color-gray-400-rgb), 0.85);
+  }
+}
+
+[data-color-scheme="dark"] .header {
+  background: rgba(var(--color-gray-400-rgb), 0.85);
+}
+
+[data-color-scheme="light"] .header {
+  background: rgba(var(--color-brown-600-rgb), 0.85);
 }
 
 .header .logo {
@@ -1146,7 +1142,6 @@ a:hover {
   position: relative;
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-semibold);
-  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .nav a::after {
@@ -1163,10 +1158,6 @@ a:hover {
 .nav a:hover::after,
 .nav a.active::after {
   width: 100%;
-}
-
-.nav a:hover {
-  color: var(--color-primary);
 }
 
 .wallet-btn {
@@ -1219,19 +1210,19 @@ a:hover {
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-16);
-  color: var(--color-cream-50);
+  color: var(--color-cream-100);
 }
 
 .hero p {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-32);
-  color: var(--color-cream-50);
+  color: var(--color-cream-100);
 }
 
 /* Countdown */
 .countdown {
   display: inline-block;
-  background: rgba(var(--color-brown-600-rgb), 0.15);
+  background: var(--color-secondary);
   padding: var(--space-16) var(--space-32);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
@@ -1270,10 +1261,7 @@ a:hover {
 .carousel-container {
   max-width: 900px;
   margin: 0 auto 3rem auto;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-card-border);
-  padding: var(--space-24);
+  background: transparent;
 }
 
 .carousel-container h3 {
@@ -1283,16 +1271,67 @@ a:hover {
   color: var(--color-primary);
   margin-top: 2rem;
   margin-bottom: 3rem;
+  background: transparent;
   padding: 0;
 }
 
-.carousel-controls {
-  text-align: center;
-  margin-bottom: 1rem;
+.swiper {
+  width: 1366px;
+  max-width: 100%;
+  height: 768px;
+  margin: 0 auto 3rem auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background-color: transparent;
+  position: relative;
 }
 
-/* Circular Play/Pause Button */
+.swiper-wrapper {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.swiper-slide {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.swiper-pagination-bullet {
+  background: var(--color-secondary);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary);
+}
+
+/* Circular Play/Pause Button - Appears on hover */
 .play-pause-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -1302,25 +1341,25 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--shadow-lg);
   transition: all var(--duration-normal) var(--ease-standard);
-  box-shadow: var(--shadow-md);
-  margin: 0 auto;
-  position: relative;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.swiper:hover .play-pause-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .play-pause-btn:hover {
   background: var(--color-secondary);
-  transform: scale(1.1);
+  transform: translateX(-50%) scale(1.1);
   box-shadow: var(--shadow-lg);
 }
 
 .play-pause-btn:active {
-  transform: scale(0.95);
-}
-
-.play-pause-btn:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
+  transform: translateX(-50%) scale(0.95);
 }
 
 /* Pause icon (two vertical bars) */
@@ -1347,60 +1386,7 @@ a:hover {
   border-left: 12px solid var(--color-text);
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  margin-left: 3px; /* Slight offset to center visually */
-}
-
-.swiper {
-  width: 1366px;
-  max-width: 100%;
-  height: 768px;
-  margin: 0 auto 3rem auto;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  background-color: var(--color-surface);
-}
-
-.swiper-wrapper {
-  padding: 0;
-  margin: 0;
-}
-
-.swiper-slide {
-  background-color: var(--color-surface);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--color-primary);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  box-shadow: var(--shadow-sm);
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: var(--color-secondary);
-}
-
-.swiper-pagination-bullet {
-  background: rgba(var(--color-text-secondary), 0.5);
-}
-
-.swiper-pagination-bullet-active {
-  background: var(--color-primary);
+  margin-left: 3px;
 }
 
 /* PDF viewer */
@@ -1408,7 +1394,7 @@ a:hover {
   width: 100%;
   height: 95vh;
   margin-top: 3rem;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-base);
   box-shadow: var(--shadow-lg);
   display: block;
@@ -1437,11 +1423,6 @@ a:hover {
   box-shadow: var(--shadow-lg);
 }
 
-.download-btn:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
 /* Connect wallet button */
 #connectButton {
   background-color: var(--color-primary);
@@ -1452,8 +1433,7 @@ a:hover {
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: background-color var(--duration-normal) var(--ease-standard), 
-              box-shadow var(--duration-normal) var(--ease-standard);
+  transition: all var(--duration-normal) var(--ease-standard);
   box-shadow: var(--shadow-md);
 }
 
@@ -1464,6 +1444,7 @@ a:hover {
 
 #connectButton:active {
   background-color: var(--color-primary-active);
+  transform: translateY(1px);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1475,6 +1456,7 @@ a:hover {
 /* Sections spacing */
 .content-section {
   padding: var(--space-32) 0;
+  background: transparent;
 }
 
 /* Footer */
@@ -1525,9 +1507,6 @@ a:hover {
   .play-pause-btn {
     width: 50px;
     height: 50px;
-  }
-  .carousel-container {
-    padding: var(--space-16);
   }
 }
 
@@ -1581,14 +1560,5 @@ a:hover {
   .play-pause-btn {
     width: 45px;
     height: 45px;
-  }
-  .carousel-container {
-    padding: var(--space-12);
-    margin: 0 auto var(--space-20) auto;
-  }
-  .carousel-container h3 {
-    font-size: var(--font-size-lg);
-    margin-top: var(--space-16);
-    margin-bottom: var(--space-16);
   }
 }
