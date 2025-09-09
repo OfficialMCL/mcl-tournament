@@ -5,6 +5,7 @@ const swiper = new Swiper('.swiper', {
   pagination: { el: '.swiper-pagination', clickable: true },
 });
 
+// Pausa / Riprendi controlli
 const pauseBtn = document.getElementById('pauseBtn');
 const playBtn = document.getElementById('playBtn');
 
