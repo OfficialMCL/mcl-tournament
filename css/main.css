@@ -1014,14 +1014,15 @@ body {
 }
 
 .pdf-viewer {
-  margin-top: 3rem; /* margine superiore più ampio */
-  height: 85vh;     /* altezza aumentata per area lettura più grande */
+  margin-top: 3rem;
+  height: 125vh;   /* Mostra quasi tutto lo schermo occupato dal PDF */
   width: 100%;
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 1rem;
 }
+
 
 
 #connectWalletBtn {
