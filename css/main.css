@@ -1078,7 +1078,7 @@ body {
   font-size: 16px;                /* Testo ben visibile */
   font-weight: 600;               /* Testo in grassetto */
   border: none;                   /* Nessun bordo */
-  border-radius: 8px;             /* Angoli arrotondati */
+  border-radius: 20px;             /* Angoli arrotondati */
   cursor: pointer;                /* Indica che è cliccabile */
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(86, 54, 211, 0.3);
@@ -1097,4 +1097,8 @@ body {
 #connectButton:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(86, 54, 211, 0.6); /* Evidenziazione focus */
+}
+
+#connectButton {
+  margin-left: 100px; /* aumenta il valore per spostare più a destra */
 }
