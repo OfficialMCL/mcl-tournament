@@ -1012,3 +1012,13 @@ body {
   height: 100%;
   object-fit: contain;
 }
+
+.pdf-viewer {
+  margin-top: 3rem; /* margine superiore più ampio */
+  height: 85vh;     /* altezza aumentata per area lettura più grande */
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
