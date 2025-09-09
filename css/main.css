@@ -1022,3 +1022,27 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 1rem;
 }
+
+
+#connectWalletBtn {
+  background-color: #5a26c8;        /* Colore viola scuro di base */
+  color: white;                     /* Testo bianco */
+  border: none;                    /* Nessun bordo */
+  padding: 12px 20px;              /* Spaziatura interna */
+  border-radius: 6px;              /* Angoli arrotondati */
+  font-size: 16px;                 /* Dimensione del testo */
+  font-weight: 600;                /* Testo leggermente più spesso */
+  cursor: pointer;                /* Cursore a mano */
+  display: inline-flex;            /* Flex per allineare l'icona e testo */
+  align-items: center;             /* Centra verticalmente */
+  gap: 10px;                      /* Spazio tra icona e testo */
+  transition: background-color 0.3s ease;
+}
+
+#connectWalletBtn:hover {
+  background-color: #4821a8;      /* Colore più scuro al passaggio del mouse */
+}
+
+#connectWalletBtn i {
+  font-size: 20px;                /* Dimensione icona Wallet */
+}
