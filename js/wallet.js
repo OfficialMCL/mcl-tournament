@@ -1,31 +1,30 @@
-// Function to connect Phantom wallet with state check and error handling
-const connectWallet = async () => {
+async function connectPhantomWallet() {
   if (window.solana && window.solana.isPhantom) {
-    if (window.solana.isConnected) {
-      alert('Wallet is already connected: ' + window.solana.publicKey.toString());
-      return;
-    }
     try {
-      const resp = await window.solana.connect();
-      alert('Wallet connected: ' + resp.publicKey.toString());
-    } catch (err) {
-      if (err.code === 4001) {
-        alert('Connection rejected. Please try again.');
+      const response = await window.solana.connect();
+      console.log('Wallet connected:', response.publicKey.toString());
+      alert('Wallet connected: ' + response.publicKey.toString());
+      // You can update your UI here to show the connected wallet address
+    } catch (error) {
+      // Handle when user closes the popup or rejects the connection
+      if (error.code === 4001) { // 4001 is the user rejected error code
+        alert('Connection request was rejected. Please click Connect Wallet to try again.');
       } else {
-        alert('An error occurred during wallet connection.');
+        alert('Connection failed: ' + error.message);
       }
+      console.error('Connection error:', error);
     }
   } else {
-    alert('Phantom Wallet not detected. Please install the extension.');
+    alert('Phantom Wallet not found. Please install it.');
   }
-};
+}
 
-// Function to disconnect Phantom wallet
-const disconnectWallet = async () => {
-  if (window.solana && window.solana.isPhantom && window.solana.isConnected) {
-    await window.solana.disconnect();
-    alert('Wallet disconnected.');
-  } else {
-    alert('No wallet connected.');
-  }
-};
+// Attach the event listener safely after DOM content is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const connectButton = document.getElementById('connectWalletBtn');
+  if (connectButton) {
+    connectButton.addEventListener('click', () => [
+      connectPhantomWallet();
+  });
+}
+});
