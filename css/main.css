@@ -919,7 +919,6 @@ select.form-control {
     --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
     --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
     --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
@@ -939,7 +938,7 @@ select.form-control {
   --color-gray-300-rgb: 167, 169, 169;
   --color-gray-200-rgb: 245, 245, 245;
 
-  /* Colorful background palette - Dark Mode */
+  /* Background color tokens (Dark Mode) */
   --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
   --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
   --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
@@ -1084,7 +1083,8 @@ a:hover {
   width: 90%;
   max-width: var(--container-xl);
   margin: 0 auto;
-  background: transparent;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
 }
 
 @media (min-width: 640px) { .container { max-width: var(--container-sm); } }
@@ -1094,23 +1094,9 @@ a:hover {
 
 /* Header */
 .header {
-  background: rgba(var(--color-brown-600-rgb), 0.85);
+  background: rgba(var(--color-gray-400-rgb), 0.85);
   z-index: 1000;
   padding: 1rem 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .header {
-    background: rgba(var(--color-gray-400-rgb), 0.85);
-  }
-}
-
-[data-color-scheme="dark"] .header {
-  background: rgba(var(--color-gray-400-rgb), 0.85);
-}
-
-[data-color-scheme="light"] .header {
-  background: rgba(var(--color-brown-600-rgb), 0.85);
 }
 
 .header .logo {
@@ -1210,13 +1196,13 @@ a:hover {
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-16);
-  color: var(--color-cream-100);
+  color: var(--color-text);
 }
 
 .hero p {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-32);
-  color: var(--color-cream-100);
+  color: var(--color-text);
 }
 
 /* Countdown */
@@ -1261,7 +1247,6 @@ a:hover {
 .carousel-container {
   max-width: 900px;
   margin: 0 auto 3rem auto;
-  background: transparent;
 }
 
 .carousel-container h3 {
@@ -1271,7 +1256,6 @@ a:hover {
   color: var(--color-primary);
   margin-top: 2rem;
   margin-bottom: 3rem;
-  background: transparent;
   padding: 0;
 }
 
@@ -1283,38 +1267,36 @@ a:hover {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  background-color: transparent;
+  background-color: var(--color-surface);
   position: relative;
 }
 
 .swiper-wrapper {
   padding: 0;
   margin: 0;
-  background: transparent;
 }
 
 .swiper-slide {
-  background-color: transparent;
+  background-color: var(--color-surface);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background-color: transparent;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--color-primary);
-  background: var(--color-surface);
+  background: rgba(var(--color-surface), 0.9);
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  box-shadow: var(--shadow-sm);
 }
 
 .swiper-pagination-bullet {
@@ -1325,10 +1307,10 @@ a:hover {
   background: var(--color-primary);
 }
 
-/* Circular Play/Pause Button - Appears on hover */
+/* Circular Play/Pause Button - Appears on hover over slide */
 .play-pause-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -1341,13 +1323,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   transition: all var(--duration-normal) var(--ease-standard);
   opacity: 0;
   pointer-events: none;
 }
 
-.swiper:hover .play-pause-btn {
+/* Show button when hovering over the entire slide */
+.swiper-slide:hover .play-pause-btn {
   opacity: 1;
   pointer-events: auto;
 }
@@ -1394,7 +1377,7 @@ a:hover {
   width: 100%;
   height: 95vh;
   margin-top: 3rem;
-  border: none;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   box-shadow: var(--shadow-lg);
   display: block;
@@ -1415,12 +1398,10 @@ a:hover {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
   transition: transform var(--duration-fast) var(--ease-standard);
-  box-shadow: var(--shadow-md);
 }
 
 .download-btn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 /* Connect wallet button */
@@ -1431,9 +1412,9 @@ a:hover {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-standard);
+  transition: background-color var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-standard);
   box-shadow: var(--shadow-md);
 }
 
@@ -1444,11 +1425,10 @@ a:hover {
 
 #connectButton:active {
   background-color: var(--color-primary-active);
-  transform: translateY(1px);
   box-shadow: var(--shadow-sm);
 }
 
-#connectButton:focus-visible {
+#connectButton:focus {
   outline: none;
   box-shadow: var(--focus-ring);
 }
@@ -1456,7 +1436,6 @@ a:hover {
 /* Sections spacing */
 .content-section {
   padding: var(--space-32) 0;
-  background: transparent;
 }
 
 /* Footer */
@@ -1507,6 +1486,7 @@ a:hover {
   .play-pause-btn {
     width: 50px;
     height: 50px;
+    bottom: 20px;
   }
 }
 
@@ -1560,5 +1540,6 @@ a:hover {
   .play-pause-btn {
     width: 45px;
     height: 45px;
+    bottom: 15px;
   }
 }
