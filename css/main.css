@@ -1005,7 +1005,7 @@ body {
   height: 768px;
   border-radius: 12px;
   overflow: hidden;
-  background: #fff;
+  background: transparent;      /* <-- Elimina sfondo bianco */
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   margin-left: auto;
   margin-right: auto;
@@ -1081,3 +1081,4 @@ body {
 #connectWalletBtn i {
   font-size: 20px;                /* Dimensione icona Wallet */
 }
+
