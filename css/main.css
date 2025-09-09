@@ -1070,51 +1070,31 @@ body {
 }
 
 
+
 #connectButton {
-  background-color: #5a26c8;        /* Colore viola scuro di base */
-  color: white;                     /* Testo bianco */
-  border: none;                    /* Nessun bordo */
-  padding: 12px 20px;              /* Spaziatura interna */
-  border-radius: 6px;              /* Angoli arrotondati */
-  font-size: 16px;                 /* Dimensione del testo */
-  font-weight: 600;                /* Testo leggermente più spesso */
-  cursor: pointer;                /* Cursore a mano */
-  display: inline-flex;            /* Flex per allineare l'icona e testo */
-  align-items: center;             /* Centra verticalmente */
-  gap: 10px;                      /* Spazio tra icona e testo */
-  #connectButton {
-  background-color: #8247e5;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 100px;  /* Aggiunto: sposta il bottone verso destra */
+  background-color: #5636d3;      /* Viola Phantom caratteristico */
+  color: white;                   /* Testo leggibile */
+  padding: 12px 24px;             /* Spaziatura comoda */
+  font-size: 16px;                /* Testo ben visibile */
+  font-weight: 600;               /* Testo in grassetto */
+  border: none;                   /* Nessun bordo */
+  border-radius: 8px;             /* Angoli arrotondati */
+  cursor: pointer;                /* Indica che è cliccabile */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(86, 54, 211, 0.3);
 }
 
 #connectButton:hover {
-  background-color: #6a37c9;
+  background-color: #4529b8;      /* Viola più scuro al passaggio */
+  box-shadow: 0 6px 12px rgba(69, 41, 184, 0.5);
 }
 
-/* Icona FontAwesome dimensione */
-#connectButton i {
-  font-size: 18px;
-}
-  transition: background-color 0.3s ease;
+#connectButton:active {
+  background-color: #361e8d;      /* Viola scuro al clic */
+  box-shadow: 0 2px 6px rgba(54, 30, 141, 0.7);
 }
 
-#connectButton:hover {
-  background-color: #4821a8;      /* Colore più scuro al passaggio del mouse */
+#connectButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(86, 54, 211, 0.6); /* Evidenziazione focus */
 }
-
-#connectButton i {
-  font-size: 18px;                /* Dimensione icona Wallet */
-}
-
-
-
