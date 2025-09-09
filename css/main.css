@@ -1048,6 +1048,29 @@ body {
   display: inline-flex;            /* Flex per allineare l'icona e testo */
   align-items: center;             /* Centra verticalmente */
   gap: 10px;                      /* Spazio tra icona e testo */
+  #connectWalletBtn {
+  background-color: #8247e5;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 20px;  /* Aggiunto: sposta il bottone verso destra */
+}
+
+#connectWalletBtn:hover {
+  background-color: #6a37c9;
+}
+
+/* Icona FontAwesome dimensione */
+#connectWalletBtn i {
+  font-size: 18px;
+}
   transition: background-color 0.3s ease;
 }
 
