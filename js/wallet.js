@@ -5,10 +5,10 @@
   <title>Connect Solana Wallet</title>
 </head>
 <body>
-  <button id="connectButton">Connect Solana Wallet</button>
+  <button id="connectWalletBtn">Connect Solana Wallet</button>
 
   <script>
-    const connectButton = document.getElementById('connectButton');
+    const connectButton = document.getElementById('connectWalletBtn');
 
     connectButton.addEventListener('click', async () => {
       if (window.solana && window.solana.isPhantom) {
