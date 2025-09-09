@@ -303,15 +303,19 @@ html {
   font-family: var(--font-family-base);
   line-height: var(--line-height-normal);
   color: var(--color-text);
-  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #121212 !important;
+  height: 100%;
 }
 
 body {
   background-color: #121212 !important;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 *,
@@ -618,6 +622,7 @@ select.form-control {
   margin-left: auto;
   padding-right: var(--space-16);
   padding-left: var(--space-16);
+  background: transparent !important;
 }
 
 @media (min-width: 640px) {
@@ -918,6 +923,7 @@ body {
 /* Sections spacing */
 .content-section {
   padding: var(--space-32) 0;
+  background: transparent !important;
 }
 
 /* Mobile portrait breakpoint */
@@ -1019,6 +1025,12 @@ body {
   background-color: transparent !important;
 }
 
+.swiper-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
 .pdf-viewer {
   height: 95vh !important;
   width: 100%;
@@ -1037,6 +1049,9 @@ body {
   background-color: transparent !important;
   margin-bottom: 3rem;  /* spazio verticale maggiore sotto il titolo */
   margin-top: 2rem;     /* opzionale: spazio sopra il titolo */
+  padding: 0 !important;
+  margin: 0 auto 3rem auto;
+  background: transparent !important;
 }
 
 
