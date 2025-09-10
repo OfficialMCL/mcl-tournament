@@ -1,6 +1,8 @@
 // carousel.js - Carousel functionality for Swiper
 const swiper = new Swiper('.swiper', {
   loop: true,
+  slidesPerView: 1,
+  spaceBetween: 0,
   // NON includere autoplay
   // autoplay: { delay: 8000, disableOnInteraction: false },
   navigation: {
