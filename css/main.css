@@ -1473,4 +1473,8 @@ h1, h2, h3, h4, h5, h6 {
   /* copre interamente la slide */: ;
 }
 
+html, body {
+  background-color: #121212 !important;
+  color: var(--color-white) !important;
+}
 
