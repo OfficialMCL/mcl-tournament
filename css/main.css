@@ -1325,6 +1325,27 @@ a:hover {
   background: var(--color-primary);
 }
 
+/* Rimuovi la barra nera sotto allo swiper */
+.carousel-container {
+    background: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+/* Assicura che il contenitore swiper abbia sfondo trasparente */
+.swiper {
+    background: transparent !important;
+}
+
+/* Elimina qualsiasi barra nera dalla paginazione (i puntini) */
+.swiper-pagination {
+    background: transparent !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Se la barra è ancora visibile, puoi nascondere la paginazione così: */
+/* .swiper-pagination { display: none !important; } */
+
 /* Circular Play/Pause Button - Appears on hover */
 /*.play-pause-btn {
   position: absolute;
