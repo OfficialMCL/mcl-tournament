@@ -1478,3 +1478,39 @@ html, body {
   color: var(--color-white) !important;
 }
 
+  h1, h2, h3, h4, h5, h6 {
+  color: #e0e6e8; /* bianco leggermente smorzato per titoli */
+  font-weight: 700;
+}
+
+p, li, span, div {
+  color: #cfd8dc; /* grigio chiaro morbido per testi normali */
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-teal-300);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: var(--color-teal-500);
+  text-decoration: none;
+}
+
+/* Bottoni o elementi interattivi */
+button, .btn {
+  color: var(--color-white);
+  background-color: var(--color-teal-600);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--color-teal-700);
+}
+
