@@ -1326,7 +1326,7 @@ a:hover {
 }
 
 /* Circular Play/Pause Button - Appears on hover */
-.play-pause-btn {
+/*.play-pause-btn {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -1343,13 +1343,13 @@ a:hover {
   cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: all var(--duration-normal) var(--ease-standard);
-  /* Rimuovi pointer-events: none e opacity: 0 di default */
-  opacity: 1;
-  pointer-events: auto;
-}
-
+  opacity: 1; 
+  pointer-events: auto; 
+} 
+*/
+/*
 .swiper:hover .play-pause-btn {
-  opacity: 1;   /* Puoi mantenere l’effetto hover se vuoi */
+  opacity: 1;  
 }
 
 .play-pause-btn:hover {
@@ -1360,9 +1360,10 @@ a:hover {
 
 .play-pause-btn:active {
   transform: translateX(-50%) scale(0.95);
-}
+} 
 
-/* Icone rimangono invariate */
+
+/* Icone rimangono invariate 
 .pause-icon {
   display: flex;
   align-items: center;
