@@ -1343,13 +1343,13 @@ a:hover {
   cursor: pointer;
   box-shadow: var(--shadow-lg);
   transition: all var(--duration-normal) var(--ease-standard);
-  opacity: 0;
-  pointer-events: none;
+  /* Rimuovi pointer-events: none e opacity: 0 di default */
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .swiper:hover .play-pause-btn {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1;   /* Puoi mantenere l’effetto hover se vuoi */
 }
 
 .play-pause-btn:hover {
@@ -1362,14 +1362,13 @@ a:hover {
   transform: translateX(-50%) scale(0.95);
 }
 
-/* Pause icon (two vertical bars) */
+/* Icone rimangono invariate */
 .pause-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3px;
 }
-
 .pause-icon::before,
 .pause-icon::after {
   content: '';
@@ -1378,8 +1377,6 @@ a:hover {
   background: var(--color-text);
   border-radius: 1px;
 }
-
-/* Play icon (triangle pointing right) */
 .play-icon {
   width: 0;
   height: 0;
