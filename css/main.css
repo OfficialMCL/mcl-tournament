@@ -1260,9 +1260,14 @@ a:hover {
 /* Carousel styles */
 .carousel-container {
   max-width: 900px;
-  background: transparent;
   width: 70vw;             /* larghezza pari al 70% della viewport */
-  margin: 0 auto 3rem;     /* centrato orizzontalmente */
+  position: absolute !important;
+  bottom: 10px;      /* o quanto desideri sopra il fondo */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .carousel-container h3 {
@@ -1325,7 +1330,7 @@ a:hover {
   background: var(--color-primary);
 }
 
-.carousel-container .swiper-pagination {
+.swiper-pagination {
   position: absolute !important;
   bottom: 10px;      /* o quanto desideri sopra il fondo */
   left: 50% !important;
