@@ -1,52 +1,566 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - Meme Coin League</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeTournament - La Piattaforma di Tornei Memecoin Definitiva</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@solana/wallet-adapter-wallets@0.19.16/lib/index.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@1.75.0/lib/index.iife.min.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <div class="logo">
-          <img src="assets/mcl-logo.png" alt="MCL Logo" class="logo-img" />
-          <h1>Meme Coin League</h1>
+    <!-- Interactive Landing Screen -->
+    <div id="landing-screen" class="landing-screen">
+        <div class="landing-content">
+            <div class="landing-title">Join the Tournament</div>
+            <div class="scroll-indicator">
+                <i class="fas fa-mouse"></i>
+                <span>Scorri per entrare</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 2rem;">
-          <a href="index.html" class="active">Home</a>
-          <a href="tournament.html">Tournament</a>
-          <a href="tokenomics.html">Tokenomics</a>
-          <a href="whitepaper.html">Whitepaper</a>
-          <a href="support.html">Support</a>
-          <a href="about.html">About Us</a>
-          <button id="connect-wallet" class="wallet-btn">
-            <i class="fas fa-wallet"></i> Connect Wallet
-          </button>
+        <div class="landing-background"></div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="main-app hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="nav-brand">
+                    <h2>MemeTournament</h2>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link active" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="tournament">Tournament</a>
+                    <a href="#" class="nav-link" data-page="tokenomics">Tokenomics</a>
+                    <a href="#" class="nav-link" data-page="whitepaper">Whitepaper</a>
+                    <a href="#" class="nav-link" data-page="support">Support</a>
+                    <a href="#" class="nav-link" data-page="about">About Us</a>
+                </nav>
+                <div class="wallet-section">
+                    <button id="connect-wallet" class="wallet-btn">
+                        <i class="fas fa-wallet"></i> Connetti Wallet
+                    </button>
+                    <div id="wallet-dropdown" class="wallet-dropdown hidden">
+                        <div class="wallet-option" data-wallet="phantom">
+                            <i class="fas fa-ghost"></i> Phantom
+                        </div>
+                        <div class="wallet-option" data-wallet="solflare">
+                            <i class="fas fa-fire"></i> Solflare
+                        </div>
+                        <div class="wallet-option" data-wallet="slope">
+                            <i class="fas fa-chart-line"></i> Slope
+                        </div>
+                        <div class="wallet-option" data-wallet="backpack">
+                            <i class="fas fa-backpack"></i> Backpack
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Home Page -->
+            <section id="home-page" class="page active">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <h1 class="hero-title">La Piattaforma di Tornei Memecoin Definitiva</h1>
+                            <p class="hero-subtitle">Partecipa ai tornei settimanali, fai staking di token $MCL e vota per le tue memecoin preferite per vincere</p>
+                            <div class="hero-buttons">
+                                <button class="btn btn-primary">Unisciti al Torneo</button>
+                                <button class="btn btn-secondary">Compra $MCL</button>
+                            </div>
+                            <div class="hero-stats">
+                                <div class="stat">
+                                    <div class="stat-value">$45,678.90</div>
+                                    <div class="stat-label">Totale in Staking</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">2,341</div>
+                                    <div class="stat-label">Votanti Attivi</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="phone-mockup">
+                                <div class="phone-screen">
+                                    <div class="screen-content">
+                                        <h3>Torneo Live</h3>
+                                        <div class="mock-tournament">
+                                            <div class="coin-battle">
+                                                <div class="coin">DOGE</div>
+                                                <div class="vs">VS</div>
+                                                <div class="coin">PEPE</div>
+                                            </div>
+                                            <div class="vote-count">1,247 voti</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section class="features">
+                    <div class="container">
+                        <h2 class="section-title">Perché Scegliere MemeTournament?</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3>Tornei Settimanali</h3>
+                                <p>Partecipa a emozionanti battaglie settimanali tra memecoin</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h3>Sistema di Staking</h3>
+                                <p>Fai staking di token $MCL per votare i tuoi preferiti</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Guidato dalla Comunità</h3>
+                                <p>Lascia che la comunità decida i vincitori</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3>Integrazione Solana</h3>
+                                <p>Costruito sulla blockchain Solana veloce ed efficiente</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Tournament Page -->
+            <section id="tournament-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Arena del Torneo</h1>
+                    <div class="tournament-container">
+                        <div class="tournament-phase">
+                            <h2 id="tournament-phase-title">Ottavi di Finale</h2>
+                            <div class="tournament-timer">
+                                <div class="timer-display" id="tournament-timer">
+                                    <span class="timer-value" id="timer-hours">23</span>
+                                    <span class="timer-label">ore</span>
+                                    <span class="timer-value" id="timer-minutes">00</span>
+                                    <span class="timer-label">min</span>
+                                    <span class="timer-value" id="timer-seconds">00</span>
+                                    <span class="timer-label">sec</span>
+                                </div>
+                                <div class="timer-description" id="timer-description">
+                                    Tempo rimanente per la fine degli ottavi di finale
+                                </div>
+                            </div>
+                        </div>
+                        <div class="current-tournament">
+                            <h2>Memecoin Madness Settimana 42</h2>
+                            <div class="tournament-bracket">
+                                <div class="match">
+                                    <div class="coin-contestant">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRjZCMzUiLz4KPHRLEHT0="
+                                             alt="DOGE" class="coin-avatar">
+                                        <span class="coin-name">DOGE</span>
+                                        <div class="vote-count">1,247 voti</div>
+                                    </div>
+                                    <div class="vs-divider">VS</div>
+                                    <div class="coin-contestant">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNGRkE1MDAiLz4KPHRLEHT0="
+                                             alt="PEPE" class="coin-avatar">
+                                        <span class="coin-name">PEPE</span>
+                                        <div class="vote-count">987 voti</div>
+                                    </div>
+                                </div>
+                                <div class="voting-panel">
+                                    <h3>Vota con i tuoi $MCL</h3>
+                                    <div class="vote-form">
+                                        <input type="number" placeholder="Quantità da mettere in staking" class="stake-input">
+                                        <div class="vote-buttons">
+                                            <button class="btn btn-primary">Vota DOGE</button>
+                                            <button class="btn btn-secondary">Vota PEPE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tournament-stats">
+                            <div class="stat-card">
+                                <h3>Montepremi Totale</h3>
+                                <p>12,500 $MCL</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Contratto Torneo</h3>
+                                <p class="contract-address">8xKXtg2CW87HFtjNVKk6VWKAcPbKA6V5sJQvFdpFv7K4</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tokenomics Page -->
+            <section id="tokenomics-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Tokenomics $MCL</h1>
+                    <div class="tokenomics-grid">
+                        <div class="token-info">
+                            <h2>Informazioni Token</h2>
+                            <div class="token-stats">
+                                <div class="token-stat">
+                                    <label>Fornitura Totale</label>
+                                    <value>1,000,000,000 MCL</value>
+                                </div>
+                                <div class="token-stat">
+                                    <label>Fornitura Circolante</label>
+                                    <value>650,000,000 MCL</value>
+                                </div>
+                                <div class="token-stat">
+                                    <label>Prezzo Attuale</label>
+                                    <value>$0.0045</value>
+                                </div>
+                                <div class="token-stat">
+                                    <label>Indirizzo Token</label>
+                                    <value class="contract-address">7xKXtg2CW87HFtjNVKk6VWKAcPbKA6V5sJQvFdpFv7K2</value>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="token-utility">
+                            <h2>Utilità</h2>
+                            <ul class="utility-list">
+                                <li>Vota nelle battaglie del torneo</li>
+                                <li>Fai staking per ricompense</li>
+                                <li>Partecipazione alla governance</li>
+                                <li>Accesso esclusivo ai tornei</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Roadmap Section -->
+                    <div class="roadmap-section">
+                        <h2>Roadmap</h2>
+                        <div class="roadmap-timeline">
+                            <div class="roadmap-item completed">
+                                <h3>Q1 2026</h3>
+                                <h4>Lancio Piattaforma</h4>
+                                <ul>
+                                    <li>Lancio torneo beta</li>
+                                    <li>Funzionalità di staking principale</li>
+                                    <li>Costruzione della comunità</li>
+                                </ul>
+                            </div>
+                            <div class="roadmap-item current">
+                                <h3>Q2 2026</h3>
+                                <h4>Espansione Funzionalità</h4>
+                                <ul>
+                                    <li>Meccaniche di voto avanzate</li>
+                                    <li>Sviluppo app mobile</li>
+                                    <li>Integrazioni partnership</li>
+                                </ul>
+                            </div>
+                            <div class="roadmap-item">
+                                <h3>Q3 2026</h3>
+                                <h4>Crescita Ecosistema</h4>
+                                <ul>
+                                    <li>Supporto multi-chain</li>
+                                    <li>Sistema ricompense NFT</li>
+                                    <li>Implementazione governance</li>
+                                </ul>
+                            </div>
+                            <div class="roadmap-item">
+                                <h3>Q4 2026</h3>
+                                <h4>Adozione Globale</h4>
+                                <ul>
+                                    <li>Espansione internazionale</li>
+                                    <li>Partnership enterprise</li>
+                                    <li>Dashboard analitiche avanzate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buy-section">
+                        <h2>Compra $MCL con Solana</h2>
+                        <div class="buy-form">
+                            <input type="number" placeholder="Quantità SOL" class="buy-input">
+                            <button class="btn btn-primary btn-large">Compra MCL</button>
+                        </div>
+                        <div class="contract-info">
+                            <p><strong>Contratto Staking:</strong> <span class="contract-address">9xKXtg2CW87HFtjNVKk6VWKAcPbKA6V5sJQvFdpFv7K3</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Whitepaper Page -->
+            <section id="whitepaper-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Whitepaper</h1>
+                    <div class="whitepaper-content">
+                        <div class="pdf-viewer">
+                            <div class="pdf-header">
+                                <h2><i class="fas fa-file-pdf"></i> MCL Whitepaper Versione 1.0</h2>
+                                <p>Documentazione tecnica completa e panoramica del progetto</p>
+                                <button class="btn btn-primary download-btn">
+                                    <i class="fas fa-download"></i> Scarica Whitepaper PDF Completo
+                                </button>
+                            </div>
+                            <div class="pdf-container">
+                                <div class="pdf-placeholder">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <h3>MCL Whitepaper</h3>
+                                    <p>Visualizzatore PDF non disponibile in modalità demo</p>
+                                    <p>Il whitepaper completo includerebbe:</p>
+                                    <ul class="pdf-sections">
+                                        <li>Abstract</li>
+                                        <li>Introduzione</li>
+                                        <li>Panoramica Piattaforma</li>
+                                        <li>Tokenomics</li>
+                                        <li>Team e Governance</li>
+                                        <li>Fattori di Rischio</li>
+                                        <li>Conclusione</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-carousel">
+                            <h2>Galleria Progetto</h2>
+                            <div class="carousel-container">
+                                <button class="carousel-btn prev" id="carousel-prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="carousel-images">
+                                    <div class="carousel-slide active">
+                                        <div class="placeholder-image">
+                                            <i class="fas fa-trophy"></i>
+                                            <h4>Interfaccia Torneo</h4>
+                                            <p>Interfaccia interattiva di voto e staking</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <div class="placeholder-image">
+                                            <i class="fas fa-vote-yea"></i>
+                                            <h4>Sistema di Voto</h4>
+                                            <p>Processo decisionale trasparente guidato dalla comunità</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <div class="placeholder-image">
+                                            <i class="fas fa-chart-line"></i>
+                                            <h4>Dashboard Analytics</h4>
+                                            <p>Statistiche e insight del torneo in tempo reale</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn next" id="carousel-next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="carousel-indicators">
+                                <span class="indicator active" data-slide="0"></span>
+                                <span class="indicator" data-slide="1"></span>
+                                <span class="indicator" data-slide="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Page -->
+            <section id="support-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Centro Assistenza</h1>
+                    <div class="support-content">
+                        <div class="faq-section">
+                            <h2>Domande Frequenti</h2>
+                            <div class="faq-item">
+                                <h3>Come posso partecipare ai tornei?</h3>
+                                <p>Connetti il tuo wallet, compra token $MCL e mettili in staking per votare le tue memecoin preferite nei tornei attivi.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Cos'è il token $MCL?</h3>
+                                <p>$MCL è il nostro token di utilità nativo usato per votare, fare staking e la governance nell'ecosistema MemeTournament.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Quanto spesso si tengono i tornei?</h3>
+                                <p>Ospitiamo tornei settimanali con diversi scontri tra memecoin ed eventi speciali.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Come funziona il sistema di fasi del torneo?</h3>
+                                <p>I tornei seguono un programma settimanale: Ottavi (mer-gio), Quarti (gio-ven), Semifinali (ven-sab), Finale (sab-dom).</p>
+                            </div>
+                        </div>
+                        <div class="contact-section">
+                            <h2>Contattaci</h2>
+                            <form class="contact-form">
+                                <input type="text" placeholder="Il Tuo Nome" class="form-control">
+                                <input type="email" placeholder="La Tua Email" class="form-control">
+                                <textarea placeholder="Il Tuo Messaggio" rows="4" class="form-control"></textarea>
+                                <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Page -->
+            <section id="about-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Su MemeTournament</h1>
+                    <div class="about-content">
+                        <div class="mission-section">
+                            <h2>La Nostra Missione</h2>
+                            <p>Creare la piattaforma più coinvolgente ed equa per le competizioni tra memecoin, dove la comunità decide i vincitori attraverso meccanismi trasparenti di voto e staking.</p>
+                        </div>
+                        <div class="team-section">
+                            <h2>Il Nostro Team</h2>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <h3>Alex Chen</h3>
+                                    <p>Fondatore & CEO</p>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <h3>Sarah Johnson</h3>
+                                    <p>CTO</p>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar"></div>
+                                    <h3>Mike Rodriguez</h3>
+                                    <p>Lead Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="technology-section">
+                            <h2>Tecnologia</h2>
+                            <p>Costruito sulla blockchain Solana per transazioni veloci e commissioni minime. I nostri smart contract garantiscono votazioni trasparenti e gestione sicura dei token.</p>
+                            <div class="tech-specs">
+                                <div class="spec-item">
+                                    <h4>Blockchain</h4>
+                                    <p>Solana</p>
+                                </div>
+                                <div class="spec-item">
+                                    <h4>Smart Contracts</h4>
+                                    <p>Rust/Anchor</p>
+                                </div>
+                                <div class="spec-item">
+                                    <h4>Frontend</h4>
+                                    <p>React/TypeScript</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Terms Page -->
+            <section id="terms-page" class="page">
+                <div class="container">
+                    <h1 class="page-title">Termini di Servizio</h1>
+                    <div class="terms-content">
+                        <div class="terms-section">
+                            <h2>1. Accettazione dei Termini</h2>
+                            <p>Utilizzando MemeTournament, accetti questi termini di servizio e tutte le politiche applicabili.</p>
+                        </div>
+                        <div class="terms-section">
+                            <h2>2. Descrizione del Servizio</h2>
+                            <p>MemeTournament è una piattaforma decentralizzata per tornei di memecoin basata su blockchain Solana.</p>
+                        </div>
+                        <div class="terms-section">
+                            <h2>3. Responsabilità dell'Utente</h2>
+                            <p>Gli utenti sono responsabili della sicurezza dei propri wallet e delle proprie chiavi private.</p>
+                        </div>
+                        <div class="terms-section">
+                            <h2>4. Rischi</h2>
+                            <p>Il trading di criptovalute comporta rischi significativi. Investi solo quello che puoi permetterti di perdere.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Dashboard Modal -->
+        <div id="dashboard-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Dashboard</h2>
+                    <button class="modal-close" id="close-dashboard">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="wallet-info">
+                        <div class="wallet-address">
+                            <label>Indirizzo Wallet Connesso:</label>
+                            <div class="address-display" id="wallet-address">Non connesso</div>
+                        </div>
+                        <div class="balance-section">
+                            <div class="balance-item">
+                                <label>Saldo Solana</label>
+                                <value id="solana-balance">12.45 SOL</value>
+                            </div>
+                            <div class="balance-item">
+                                <label>Saldo $MCL</label>
+                                <value id="mcl-balance">1,250.00 MCL</value>
+                            </div>
+                        </div>
+                        <div class="dashboard-actions">
+                            <button class="btn btn-primary">Compra Altri MCL</button>
+                            <button class="btn btn-secondary">Visualizza Cronologia</button>
+                            <button class="btn btn-outline" id="disconnect-wallet">Disconnetti Wallet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container" id="countdown-container">
-      <!-- JS will insert countdown or Vote now button -->
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <h3>MemeTournament</h3>
+                        <p>La piattaforma di tornei memecoin definitiva</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="link-group">
+                            <h4>Piattaforma</h4>
+                            <a href="#" data-page="tournament">Tournament</a>
+                            <a href="#" data-page="tokenomics">Tokenomics</a>
+                            <a href="#" data-page="whitepaper">Whitepaper</a>
+                        </div>
+                        <div class="link-group">
+                            <h4>Supporto</h4>
+                            <a href="#" data-page="support">Centro Assistenza</a>
+                            <a href="#" data-page="about">Su di Noi</a>
+                            <a href="#" data-page="terms">Termini di Servizio</a>
+                        </div>
+                        <div class="link-group">
+                            <h4>Comunità</h4>
+                            <div class="social-links">
+                                <a href="https://twitter.com/memetournament" target="_blank"><i class="fab fa-x-twitter"></i> Twitter</a>
+                                <a href="https://discord.gg/memetournament" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                                <a href="https://pump.fun/memetournament" target="_blank"><i class="fas fa-rocket"></i> Pump.fun</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 MemeTournament. Tutti i diritti riservati.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Meme Coin League. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/countdown.js"></script>
-  <script src="js/wallet.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
