@@ -1585,3 +1585,34 @@ a:hover {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* 1) Posiziona i pallini sopra l’immagine */
+.swiper-pagination {
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 20 !important;  /* assicura che stiano sopra */
+}
+
+/* 2) Rimuovi margini/padding inferiori e altezza extra */
+.carousel-container {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 3) Adatta l’altezza dello swiper in base al contenuto */
+.swiper {
+  height: auto !important;
+  max-height: 600px;  /* mantieni il border-radius e reteggiatura */
+  overflow: visible !important;
+}
+
+/* 4) Elimina lo spazio creato dal wrapper interno */
+.swiper-wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
