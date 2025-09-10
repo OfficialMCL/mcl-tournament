@@ -1576,13 +1576,12 @@ a:hover {
 
 
 .swiper-pagination {
-  display: none !important;
-}
-
-/* Rimuove ogni margine o padding inferiore al carosello */
-.carousel-container,
-.swiper {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
