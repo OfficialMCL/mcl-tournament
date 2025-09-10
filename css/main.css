@@ -838,8 +838,8 @@ select.form-control {
   /* Light cyan */
 
   /* Semantic Color Tokens (Light Mode) */
-  --background-color: var(--color-background);
-  --color: var(--color-text);
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
   --color-text-secondary: var(--color-slate-500);
   --color-primary: var(--color-teal-500);
@@ -1472,6 +1472,5 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   /* copre interamente la slide */: ;
 }
-
 
 
