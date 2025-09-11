@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MemeTournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="dashboard-nav">
+            <div class="nav-brand">
+                <h2>MemeTournament</h2>
+            </div>
+            <div class="header-actions">
+                <div class="wallet-display">
+                    <i class="fas fa-wallet"></i>
+                    <span id="wallet-address-display">5KXt...v7K2</span>
+                </div>
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Back to Site
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </div>
+                <div class="nav-item" data-section="history">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </div>
+                <div class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item disconnect" data-section="disconnect">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Disconnect</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="dashboard-section active">
+                <h1 class="section-title">Dashboard</h1>
+                
+                <div class="balance-cards">
+                    <div class="balance-card">
+                        <div class="balance-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="balance-info">
+                            <h3>SOL Balance</h3>
+                            <div class="balance-amount" id="sol-balance-display">12.45 SOL</div>
+                        </div>
+                    </div>
+                    <div class="balance-card">
+                        <div class="balance-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="balance-info">
+                            <h3>MCL Balance</h3>
+                            <div class="balance-amount" id="mcl-balance-display">1,250.00 MCL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wallet-info-card">
+                    <h3>Wallet Information</h3>
+                    <div class="wallet-details">
+                        <div class="wallet-detail">
+                            <label>Wallet Address</label>
+                            <div class="wallet-address-full" id="full-wallet-address">5KXtg2CW87HFtjNVKk6VWKAcPbKA6V5sJQvFdpFv7K2</div>
+                            <button class="btn btn-sm copy-btn" onclick="copyToClipboard('full-wallet-address')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="navigateToTokenomics()">
+                            <i class="fas fa-shopping-cart"></i> Buy More MCL
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('history')">
+                            <i class="fas fa-history"></i> View History
+                        </button>
+                        <button class="btn btn-outline" onclick="navigateToTournament()">
+                            <i class="fas fa-trophy"></i> Join Tournament
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="dashboard-section">
+                <h1 class="section-title">Profile</h1>
+                
+                <div class="profile-form">
+                    <div class="avatar-section">
+                        <div class="avatar-container">
+                            <div class="avatar-preview" id="avatar-preview">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                            <button class="btn btn-secondary" onclick="document.getElementById('avatar-upload').click()">
+                                <i class="fas fa-camera"></i> Upload Avatar
+                            </button>
+                        </div>
+                    </div>
+
+                    <form class="profile-form-fields">
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email (Optional)</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Discord Username (Optional)</label>
+                            <input type="text" class="form-control" id="discord" placeholder="Enter your Discord username">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Twitter Handle (Optional)</label>
+                            <input type="text" class="form-control" id="twitter" placeholder="@yourhandle">
+                        </div>
+
+                        <button type="button" class="btn btn-primary" onclick="saveProfile()">
+                            <i class="fas fa-save"></i> Save Profile
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history-section" class="dashboard-section">
+                <h1 class="section-title">Transaction History</h1>
+                
+                <div class="history-filters">
+                    <select class="form-control" id="transaction-filter">
+                        <option value="all">All Transactions</option>
+                        <option value="purchase">Purchases</option>
+                        <option value="stake">Staking</option>
+                        <option value="sale">Sales</option>
+                    </select>
+                </div>
+
+                <div class="transactions-list" id="transactions-list">
+                    <div class="transaction-item">
+                        <div class="transaction-icon purchase">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Purchase</h4>
+                            <p>Bought 500 $MCL for 2.3 SOL</p>
+                            <span class="transaction-date">September 10, 2025 15:30 UTC</span>
+                        </div>
+                        <div class="transaction-amount positive">+500 MCL</div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="transaction-icon stake">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Stake</h4>
+                            <p>Staked 100 $MCL in Round of 16</p>
+                            <span class="transaction-date">September 11, 2025 00:15 UTC</span>
+                        </div>
+                        <div class="transaction-amount negative">-100 MCL</div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="transaction-icon purchase">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Purchase</h4>
+                            <p>Bought 250 $MCL for 1.1 SOL</p>
+                            <span class="transaction-date">September 9, 2025 20:45 UTC</span>
+                        </div>
+                        <div class="transaction-amount positive">+250 MCL</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="dashboard-section">
+                <h1 class="section-title">Settings</h1>
+                
+                <div class="settings-groups">
+                    <div class="settings-group">
+                        <h3>Preferences</h3>
+                        <div class="setting-item">
+                            <label class="form-label">Notifications</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="notifications" checked>
+                                <label for="notifications" class="toggle-slider"></label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label class="form-label">Email Updates</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="email-updates">
+                                <label for="email-updates" class="toggle-slider"></label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label class="form-label">Tournament Reminders</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="tournament-reminders" checked>
+                                <label for="tournament-reminders" class="toggle-slider"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Privacy</h3>
+                        <div class="setting-item">
+                            <label class="form-label">Public Profile</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="public-profile" checked>
+                                <label for="public-profile" class="toggle-slider"></label>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label class="form-label">Show Transaction History</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="show-transactions">
+                                <label for="show-transactions" class="toggle-slider"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Account</h3>
+                        <button class="btn btn-outline" onclick="exportData()">
+                            <i class="fas fa-download"></i> Export My Data
+                        </button>
+                        <button class="btn btn-outline danger" onclick="confirmDeleteAccount()">
+                            <i class="fas fa-trash"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Dashboard-specific JavaScript
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(`${sectionName}-section`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Activate corresponding nav item
+            const navItem = document.querySelector(`[data-section="${sectionName}"]`);
+            if (navItem && sectionName !== 'disconnect') {
+                navItem.classList.add('active');
+            }
+            
+            // Handle disconnect
+            if (sectionName === 'disconnect') {
+                disconnectWallet();
+            }
+        }
+
+        function disconnectWallet() {
+            if (confirm('Are you sure you want to disconnect your wallet?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Address copied to clipboard!', 'success');
+            });
+        }
+
+        function navigateToTokenomics() {
+            window.location.href = 'index.html#tokenomics';
+        }
+
+        function navigateToTournament() {
+            window.location.href = 'index.html#tournament';
+        }
+
+        function saveProfile() {
+            showNotification('Profile saved successfully!', 'success');
+        }
+
+        function exportData() {
+            showNotification('Data export initiated. Check your downloads.', 'info');
+        }
+
+        function confirmDeleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                showNotification('Account deletion request submitted.', 'warning');
+            }
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add navigation event listeners
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    showSection(section);
+                });
+            });
+
+            // Avatar upload handling
+            document.getElementById('avatar-upload').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.getElementById('avatar-preview');
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Transaction filter
+            document.getElementById('transaction-filter').addEventListener('change', function() {
+                // In a real app, this would filter the transaction list
+                showNotification('Transaction filter applied', 'info');
+            });
+        });
+
+        function showNotification(message, type = 'info') {
+            // Reuse notification function from main app
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span>${message}</span>
+                </div>
+                <button class="notification-close">×</button>
+            `;
+
+            Object.assign(notification.style, {
+                position: 'fixed',
+                top: '20px',
+                right: '20px',
+                backgroundColor: type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : type === 'warning' ? '#ffc107' : '#17a2b8',
+                color: '#fff',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                zIndex: '3000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                minWidth: '300px',
+                opacity: '0',
+                transform: 'translateX(100%)',
+                transition: 'all 0.3s ease'
+            });
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.style.background = 'none';
+            closeBtn.style.border = 'none';
+            closeBtn.style.color = 'inherit';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.fontSize = '18px';
+            closeBtn.style.marginLeft = '12px';
+
+            const closeNotification = () => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeNotification);
+            setTimeout(closeNotification, 3000);
+        }
+    </script>
+</body>
+</html>
