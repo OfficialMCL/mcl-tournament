@@ -1129,3 +1129,38 @@ init() {
                 this.transitionToMainApp();
             }
         };
+
+        const handleKeyDown = (e) => {
+            if (!hasScrolled && (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown')) {
+                e.preventDefault();
+                hasScrolled = true;
+                this.transitionToMainApp();
+            }
+        };
+
+        // Event listeners for scroll transition
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('keydown', handleKeyDown);
+        landingScreen.addEventListener('click', () => {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                this.transitionToMainApp();
+            }
+        });
+    }
+
+    transitionToMainApp() {
+        const landingScreen = document.getElementById('landing-screen');
+        const mainApp = document.getElementById('main-app');
+
+        landingScreen.classList.add('scrolled');
+        
+        setTimeout(() => {
+            mainApp.classList.remove('hidden');
+            landingScreen.style.display = 'none';
+            
+            // Smooth scroll to top of main app
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 800);
+    }
