@@ -1108,3 +1108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('MemeTournament App initialized successfully!');
 });
+
+init() {
+        this.setupLandingScreen();
+        this.setupEventListeners();
+        this.setupCarousel();
+        this.initializeSolanaConnection();
+        this.startTournamentTimer();
+        this.updateWalletUI();
+    }
+
+    setupLandingScreen() {
+        const landingScreen = document.getElementById('landing-screen');
+        const mainApp = document.getElementById('main-app');
+        let hasScrolled = false;
+
+        const handleScroll = () => {
+            if (!hasScrolled && (window.scrollY > 100 || event.deltaY > 0)) {
+                hasScrolled = true;
+                this.transitionToMainApp();
+            }
+        };
